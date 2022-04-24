@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<html>
+<head>
+
+    <title>Login</title>
+
+    <script>
+        function hidePw() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <form action="/Auth/Index" align="center">
+        <br>
+        Username:<input type="text" name="username"><br><br><br>
+        Password :<input type="password" name="password" id="password"><br><br>
+        <input type="checkbox" onclick="hidePw()">Show Password
+        <br>
+
+        <input type="Submit" value="Submit">
+
+        <h3>@ViewBag.Result</h3>
+
+    </form>
+</body>
+</html>

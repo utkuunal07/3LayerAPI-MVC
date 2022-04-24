@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+<head>
+
+    @{
+        ViewBag.Translator = ViewBag.Translator ?? "leetspeak";
+    }
+
+    <script type="text/javascript">
+        function codeAddress() {
+            document.getElementById("translation").value  = "@ViewBag.Translator";
+        }
+        window.onload = codeAddress;
+    </script>
+</head>
+
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Welcome, type your text translate it!  </h1>
+        <p>Make sure to try the Yoda translater too!.</p>
+
+        <form action="/Home/TranslateText">
+            <div>
+                <label for="fname">Put your Text in here to leet it!:</label>
+                <input type="text" id="leetinput" name="leetinput" value="@ViewBag.Input">
+                &nbsp;
+
+                <select name="translation" id="translation" value="yoda">
+                    <option value="leetspeak">Leetspeak</option>
+                    <option value="yoda">Yoda</option>
+                </select>
+            </div>
+
+            <div style="clear:both;">&nbsp;</div>
+            <input type="submit" value="Submit">
+
+            @{
+
+                var data = (BLL.Models.TranslationModel.Root)ViewBag.Translation;
+
+            }
+
+            <br>
+
+            <h3> @data?.contents.translated </h3>
+        </form>
+    </div>
+</body>
